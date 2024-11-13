@@ -1,0 +1,12 @@
+# Ignorer les fichiers .env dans les dossiers backend et frontend
+backend/.env
+frontend/.env
+
+# Ignorer les dossiers node_modules
+backend/node_modules
+frontend/node_modules
+
+# Ignorer les fichiers de build
+backend/build
+frontend/build
+

@@ -1,0 +1,126 @@
+/* Style de la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Titre principal */
+h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Sous-titre ou description */
+p {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Style pour les sous-titres des tables (Available Flights et Booked Flights) */
+h2 {
+  font-size: 22px;
+  color: #2c3e50;
+  margin-bottom: 5px; /* Espace réduit entre le titre et la table */
+  margin-top: 20px;
+}
+
+/* Table avec défilement vertical uniquement */
+.scrollable-table {
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  position: relative;
+  overflow-x: hidden; /* Cache la barre de défilement horizontale */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Force les colonnes à occuper de manière égale l'espace disponible */
+}
+
+/* En-tête de table fixe */
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+  z-index: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Limite la hauteur de tbody pour créer la zone défilante */
+tbody {
+  display: block;
+  max-height: 300px; /* Hauteur limite du contenu défilant */
+  overflow-y: auto; /* Barre de défilement pour le contenu */
+  overflow-x: hidden; /* Cache la barre de défilement horizontale */
+}
+
+tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* Aligne correctement les colonnes */
+}
+
+/* Cellules */
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Style des lignes paires */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Barre de recherche */
+.search-bar {
+  margin: 20px auto;
+  padding: 10px;
+  width: 80%;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  background-color: #ecf3fc;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+}
+
+/* Boutons d'action */
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
