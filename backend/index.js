@@ -27,10 +27,32 @@ pool.connect((err) => {
   }
 });
 
+async function connectWithRetry() {
+  try {
+    await pool.connect();
+    console.log('Connected to the database');
+  } catch (error) {
+    console.error('Database connection failed, retrying in 5 seconds...', error);
+    setTimeout(connectWithRetry, 5000);
+  }
+}
+
+connectWithRetry();
+
 // Routes de l'API
 app.get('/api/flights', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM flights WHERE is_booked = false');
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erreur lors de la récupération des vols disponibles.' });
+  }
+});
+
+app.get('/api/bookedflights', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM flights WHERE is_booked = true');
     res.json(result.rows);
   } catch (error) {
     console.error(error);

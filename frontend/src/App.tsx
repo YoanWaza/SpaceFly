@@ -30,6 +30,20 @@ const App: React.FC = () => {
     }
   };
 
+    // Function to fetch booked flights
+  const fetchBookedFlights = async () => {
+    try {
+      const response = await axios.get('http://localhost:5001/api/bookedflights');
+      console.log('Booked flights data:', response.data);
+      setFlights((prev) => ({
+        ...prev,
+        booked: response.data,
+      }));
+    } catch (error) {
+      console.error('Error fetching booked flights:', error);
+    }
+  };
+
   // Fonction pour réserver un vol
   const bookFlight = async (id: number) => {
     try {
@@ -61,6 +75,7 @@ const App: React.FC = () => {
   // Charger les vols disponibles lors du chargement de la page
   useEffect(() => {
     fetchFlights();
+    fetchBookedFlights();
   }, []);
 
   return (
