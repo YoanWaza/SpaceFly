@@ -34,7 +34,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend  # Assumes the frontend Dockerfile is in the frontend directory
+      context: ./frontend 
     ports:
       - "3000:3000"
     environment:
