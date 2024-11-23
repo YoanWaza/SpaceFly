@@ -36,9 +36,9 @@ This project is a full-stack flight booking application with automated CI/CD pip
 ### Local Development
 1.  Clone the repository:
 
-      git clone <repository-url>
+      git clone https://github.com/YoanWaza/SpaceFly.git
 
-      cd <repository-name>
+      cd SpaceFly
 
 
 2. Set up environment variables:
