@@ -18,15 +18,12 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
 
-    - name: Set up Docker Compose Plugin
+    - name: Install Docker Compose
       run: |
-        sudo apt-get update
-        sudo apt-get install -y docker-compose-plugin
-
-    - name: Start Docker
-      run: |
-        sudo systemctl start docker
+        sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        docker-compose --version
 
     - name: Build and Deploy with Docker Compose
       run: |
-        docker compose --env-file ./backend/.env.${{ github.ref_name }} up -d --build
+        docker-compose --env-file ./backend/.env.${{ github.ref_name }} up -d --build
