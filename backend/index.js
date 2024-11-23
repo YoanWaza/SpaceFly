@@ -91,3 +91,5 @@ app.post('/api/cancel', async (req, res) => {
 app.listen(port, () => {
   console.log(`Serveur en écoute sur le port ${port}`);
 });
+
+module.exports = app;
