@@ -1,7 +1,7 @@
 services:
   backend:
     build:
-      context: ./backend
+      context: ./backend # Specify the backend directory for the Docker build context.
     # environment:
     #   - PORT=5001
     #   - DB_HOST=db
@@ -10,31 +10,31 @@ services:
     #   - DB_NAME=flightdb
     #   - DB_PORT=5432
     environment:
-      - PORT=${PORT}
-      - DB_HOST=${DB_HOST}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - DB_PORT=${DB_PORT}
+      - PORT=${PORT}         # Port on which the backend server will run.
+      - DB_HOST=${DB_HOST}   # Hostname for the database container.
+      - DB_USER=${DB_USER}   # Database username.
+      - DB_PASSWORD=${DB_PASSWORD}  # Database password.
+      - DB_NAME=${DB_NAME}   # Name of the database to connect to.
+      - DB_PORT=${DB_PORT}   # Port number for the database.
     ports:
-      - "5001:5001"
+      - "5001:5001"         # Map port 5001 of the container to port 5001 on the host machine.
     depends_on:
       db:
-        condition: service_healthy
+        condition: service_healthy  # Wait for the database container to be healthy before starting.
 
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: flightdb
+      POSTGRES_USER: postgres       # Set the default database username.
+      POSTGRES_PASSWORD: postgres   # Set the default database password.
+      POSTGRES_DB: flightdb         # Create a database named "flightdb".
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data                     # Persistent storage for database data.
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql  # Initialize the database with this SQL script.
     ports:
-      - "5434:5432"
+      - "5434:5432"                 # Map port 5432 of the container to port 5434 on the host machine.
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"] # Check if the database is ready to accept connections.
       interval: 5s
       timeout: 5s
       retries: 5
@@ -48,4 +48,4 @@ services:
       - REACT_APP_BACKEND_URL=http://localhost:5001  # URL for the frontend to reach the backend
 
 volumes:
-  pgdata:
+  pgdata:   # Persistent volume for PostgreSQL data.
