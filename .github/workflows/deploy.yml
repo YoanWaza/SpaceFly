@@ -26,4 +26,8 @@ jobs:
 
     - name: Build and Deploy with Docker Compose
       run: |
-        docker-compose --env-file ./backend/.env.${{ github.ref_name }} up -d --build
+        if [ "${{ github.ref_name }}" = "main" ]; then
+          docker-compose --env-file ./backend/.env.prod up -d --build
+        else
+          docker-compose --env-file ./backend/.env.${{ github.ref_name }} up -d --build
+        fi
