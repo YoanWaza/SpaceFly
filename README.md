@@ -71,7 +71,7 @@ This project is a full-stack flight booking application with automated CI/CD pip
 
 
 2. Set up environment variables:
-        * Create .env.staging in the backend directory (similar to .env.dev):
+      * Create .env.staging in the backend directory (similar to .env.dev):
 
       ```PORT=5001
       DB_HOST=db
@@ -83,12 +83,12 @@ This project is a full-stack flight booking application with automated CI/CD pip
 
         Note: If using a cloud database (e.g., MongoDB Atlas), update DB_HOST and other credentials accordingly.
 
-3. Run the staging setup script:
+4. Run the staging setup script:
 
       ```./setup-staging.sh```
 
 
-4. Verify the deployment:
+5. Verify the deployment:
       * Use the staging URL (if deployed to a cloud provider).
 
 ### Production
