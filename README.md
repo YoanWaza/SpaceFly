@@ -55,6 +55,7 @@ This project is a full-stack flight booking application with automated CI/CD pip
 
 3. Run the setup script:
 
+      ```chmod +x setup-dev.sh```   
       ```./setup-dev.sh```
 
 
@@ -85,7 +86,7 @@ This project is a full-stack flight booking application with automated CI/CD pip
 
 4. Run the staging setup script:
 
-      ```chmod +x setup-dev.sh```   
+      ```chmod +x setup-staging.sh```   
       ```./setup-staging.sh```
 
 
@@ -114,6 +115,7 @@ This project is a full-stack flight booking application with automated CI/CD pip
 
 3. Run the staging setup script:
 
+      ```chmod +x setup-prod.sh```   
       ```./setup-prod.sh```
 
 
